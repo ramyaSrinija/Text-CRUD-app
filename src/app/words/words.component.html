@@ -1,0 +1,27 @@
+<div class="container mt-4 mb-5 pb-3">
+    <h4 class="text-center fs-2 mb-2fw-bold">Add Words</h4>
+<div class="row">
+    <div class="col-12 col-sm-10 col-md-6 mx-auto">
+        <form [formGroup]="addWordForm" #formRef="ngForm" class="shadow1 px-5 py-5" (ngSubmit)="formRef.valid && onSubmit()">
+            <div class="form-group mt-3">
+                <label for="word" class="form-label fw-bold">WORD</label>
+                <input type="text" name="word" id="word" class="form-control" formControlName="word">
+                <!-- error message -->
+                <div *ngIf="(word.dirty || word.touched) && word.invalid || formRef.submitted">
+                    <p class="text-danger alert alert-danger mt-3"  *ngIf="word.errors?.['required']">word is required <i class="fa-solid fa-circle-xmark"></i></p>
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="meaning" class="form-label fw-bold">MEANING</label>
+                <input type="text" name="meaning" id="meaning" class="form-control" formControlName="meaning">
+                <!-- error message -->
+                <div *ngIf="(meaning.dirty || meaning.touched) && meaning.invalid || formRef.submitted">
+                    <p class="text-danger alert alert-danger mt-3"  *ngIf="meaning.errors?.['required']">meaning is required <i class="fa-solid fa-circle-xmark"></i></p>
+                </div>
+            </div>
+            <!-- button -->
+            <button class="btn btn-dark d-block mx-auto mt-3 fw-bold text-white" type="submit">ADD WORD</button>
+        </form>
+    </div>
+</div>
+</div>

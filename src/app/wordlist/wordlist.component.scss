@@ -1,0 +1,47 @@
+.text-1{
+    font-size: 18px;
+}
+
+.table-wrapper{
+    min-width: fit-content;
+    display: block;
+    margin: auto;
+}
+
+@media only screen and (max-width:400px){
+    .table-wrapper{
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 300px;
+        min-width: 0;
+        height: max-content;
+        padding: 20px 0;
+    }
+}
+
+i{
+    cursor: pointer;
+}
+
+.search{
+    width: 400px;
+    border: 1.5px solid black;
+    background: transparent;
+    padding: 5px 30px;
+    border-radius: 50px;
+    outline: none;
+    font-size: 16px;
+    color: black;
+}
+
+@media only screen and (max-width:1030px){
+    .search{
+        width: max-content;
+    }
+}
+@media only screen and (max-width:770px){
+    .search{
+        width: max-content;
+    }
+}

@@ -1,0 +1,51 @@
+<div *ngIf="wordList !== undefined">
+    <div class="px-5 py-3">
+        <div>
+            <!-- search box -->
+             <div class="text-center">
+             <input type="pipe" name="searchTerm" id="word" #ref [(ngModel)]="searchTerm" class="form-control search" placeholder="Search for Word">
+            </div>
+        </div>
+        <div class="mt-4">
+            <h3 class="fw-bold fs-3">WORDS</h3>
+            <div class="mt-4 table-wrapper">
+                <table class="table table-responsive table-hover">
+                    <thead>
+                        <tr class="text-1">
+                            <th>WORD</th>
+                            <th>MEANING</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <tr *ngFor="let words of wordList | search:searchTerm" class="text-1">
+                            <td class="text-capitalize">{{words.word}}</td>
+                            <td class="text-capitalize">{{words.meaning}}</td>
+                            <td><i class="bi bi-pencil-square" (click)="editWord(template,words)"></i></td>
+                            <td><i class="bi bi-trash3-fill" (click)="deleteWord(words._id)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-body fw-bold bg-grey">
+        <div class="container pt-2">
+            <form #formRef="ngForm" [formGroup] = "addWordForm" class="form1" autocomplete="off">
+                <div>
+                    <label for="word" class="form-label text-gold fs-5 fw-bold">WORD</label>
+                    <input type="text" formControlName="word" id="word" class="form-control mt-1 mb-1" placeholder="Word" >
+                </div>
+                <div>
+                    <label for="meaning" class="form-label text-gold fs-5 fw-bold">MEANING</label>
+                    <input type="text" formControlName="meaning" id="meaning" class="form-control mt-1 mb-1" placeholder="Meaning" >
+                </div>
+                <button type="button" class="btn btn-dark text-white fw-bold d-block mx-auto" (click)="confirm()">SAVE</button>
+            </form>
+        </div>
+    </div>
+</ng-template>
